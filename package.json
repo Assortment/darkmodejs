@@ -1,0 +1,37 @@
+{
+  "name": "darkmodejs",
+  "version": "0.0.1",
+  "description": "Utility package for managing Dark Mode on the web",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint ./",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lukewhitehouse/darkmodejs.git"
+  },
+  "keywords": [
+    "javascript",
+    "node",
+    "dark",
+    "mode",
+    "theme"
+  ],
+  "author": "Luke Whitehouse",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lukewhitehouse/darkmodejs/issues"
+  },
+  "homepage": "https://github.com/lukewhitehouse/darkmodejs#readme",
+  "devDependencies": {
+    "@babel/core": "^7.4.5",
+    "@babel/preset-env": "^7.4.5",
+    "babel-jest": "^24.8.0",
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.17.3",
+    "eslint-plugin-jest": "^22.6.4",
+    "jest": "^24.8.0"
+  }
+}

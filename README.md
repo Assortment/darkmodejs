@@ -3,8 +3,8 @@
 <div>
 
 [![Status](https://img.shields.io/badge/status-active-success.svg)]()
-[![GitHub Issues](https://img.shields.io/github/issues/lukewhitehouse/darkmodejs.svg)](https://github.com/lukewhitehouse/darkmodejs/issues)
-[![GitHub Pull Requests](https://img.shields.io/github/issues-pr/lukewhitehouse/darkmodejs.svg)](https://github.com/lukewhitehouse/darkmodejs/pulls)
+[![GitHub Issues](https://img.shields.io/github/issues/assortment/darkmodejs.svg)](https://github.com/assortment/darkmodejs/issues)
+[![GitHub Pull Requests](https://img.shields.io/github/issues-pr/assortment/darkmodejs.svg)](https://github.com/assortment/darkmodejs/pulls)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](/LICENSE)
 
 </div>
@@ -32,13 +32,13 @@ Also requires support for the `prefers-color-scheme` media query. A complete lis
 ## 🏁 Install
 
 ```
-$ npm install darkmodejs
+$ npm install @assortment/darkmodejs
 ```
 
 ## 🎈 Usage <a name="usage"></a>
 
 ```js
-import darkmode from 'darkmodejs';
+import darkmode from '@assortment/darkmodejs';
 
 const config = { onChange: (activeTheme, themes) => {} };
 
@@ -48,13 +48,13 @@ darkmode(config);
 If you need ES5 support, you can `require` the package instead.
 
 ```js
-const darkmode = require('darkmodejs');
+const darkmode = require('@assortment/darkmodejs');
 ```
 
 An example could be logging to console when a theme is active:
 
 ```js
-import darkmode from 'darkmodejs';
+import darkmode from '@assortment/darkmodejs';
 
 const onChange = (activeTheme, themes) => {
   switch (activeTheme) {

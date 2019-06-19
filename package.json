@@ -1,5 +1,5 @@
 {
-  "name": "darkmodejs",
+  "name": "@assortment/darkmodejs",
   "version": "0.0.1",
   "description": "Utility package for managing Dark Mode on the web",
   "main": "index.js",
@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/lukewhitehouse/darkmodejs.git"
+    "url": "git+https://github.com/assortment/darkmodejs.git"
   },
   "keywords": [
     "javascript",
@@ -21,9 +21,9 @@
   "author": "Luke Whitehouse",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/lukewhitehouse/darkmodejs/issues"
+    "url": "https://github.com/assortment/darkmodejs/issues"
   },
-  "homepage": "https://github.com/lukewhitehouse/darkmodejs#readme",
+  "homepage": "https://github.com/assortment/darkmodejs#readme",
   "devDependencies": {
     "@babel/core": "^7.4.5",
     "@babel/preset-env": "^7.4.5",

@@ -8,9 +8,9 @@ module.exports = ({ onChange }) => {
   const darkQuery = window.matchMedia(`(prefers-color-scheme: ${themes.DARK})`);
   const lightQuery = window.matchMedia(`(prefers-color-scheme: ${themes.LIGHT})`);
   const noPrefQuery = window.matchMedia(`(prefers-color-scheme: ${themes.NO_PREF})`);
-  const hasNoSupport = !darkQuery.matches && !lightQuery.matches && !noPrefQuery.matches;
+  const isSupported = darkQuery.matches || lightQuery.matches || noPrefQuery.matches;
 
-  if (hasNoSupport) {
+  if (!isSupported) {
     return onChange(themes.NO_SUPP, themes);
   }
 

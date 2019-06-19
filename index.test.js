@@ -1,5 +1,17 @@
 import darkmode from '.';
 
+const themes = {
+  DARK: 'dark',
+  LIGHT: 'light',
+  NO_PREF: 'no-preference',
+  NO_SUPP: 'no-support'
+};
+const onChange = jest.fn();
+const addListener = jest.fn();
+const darkModeQuery = '(prefers-color-scheme: dark)';
+const lightModeQuery = '(prefers-color-scheme: light)';
+const noPrefQuery = '(prefers-color-scheme: no-preference)';
+
 beforeAll(() => {
   window.matchMedia = jest.fn(() => ({
     matches: false,
@@ -8,94 +20,56 @@ beforeAll(() => {
   }));
 });
 
-const addListener = jest.fn();
-const activateDarkMode = jest.fn();
-const activateLightMode = jest.fn();
-const activateFallback = jest.fn();
-const darkModeQuery = '(prefers-color-scheme: dark)';
-const lightModeQuery = '(prefers-color-scheme: light)';
-const noPrefQuery = '(prefers-color-scheme: no-preference)';
-
 describe('darkmode', () => {
   afterEach(() => jest.clearAllMocks());
 
   describe('initial calls', () => {
-    test('should call activateDarkMode when in dark mode', () => {
+    test('should call onChange correctly when in dark mode', () => {
       window.matchMedia.mockImplementation(media => ({
         matches: media === darkModeQuery,
         media,
         addListener: f => f,
         removeListener: f => f
       }));
-      darkmode({ activateDarkMode });
-      expect(activateDarkMode).toHaveBeenCalledTimes(1);
-      expect(activateLightMode).toHaveBeenCalledTimes(0);
-      expect(activateFallback).toHaveBeenCalledTimes(0);
+      darkmode({ onChange });
+      expect(onChange).toHaveBeenCalledTimes(1);
+      expect(onChange).toHaveBeenCalledWith(themes.DARK, themes);
     });
 
-    test('should not call activateDarkMode when not in dark mode', () => {
+    test('should call onChange correctly when in light mode', () => {
       window.matchMedia.mockImplementation(media => ({
         matches: media === lightModeQuery,
         media,
         addListener: f => f,
         removeListener: f => f
       }));
-      darkmode({ activateDarkMode });
-      expect(activateDarkMode).toHaveBeenCalledTimes(0);
-      expect(activateLightMode).toHaveBeenCalledTimes(0);
-      expect(activateFallback).toHaveBeenCalledTimes(0);
+      darkmode({ onChange });
+      expect(onChange).toHaveBeenCalledTimes(1);
+      expect(onChange).toHaveBeenCalledWith(themes.LIGHT, themes);
     });
 
-    test('should call activateLightMode when in light mode', () => {
-      window.matchMedia.mockImplementation(media => ({
-        matches: media === lightModeQuery,
-        media,
-        addListener: f => f,
-        removeListener: f => f
-      }));
-      darkmode({ activateLightMode });
-      expect(activateDarkMode).toHaveBeenCalledTimes(0);
-      expect(activateLightMode).toHaveBeenCalledTimes(1);
-      expect(activateFallback).toHaveBeenCalledTimes(0);
-    });
-
-    test('should not call activateLightMode when not in light mode', () => {
-      window.matchMedia.mockImplementation(media => ({
-        matches: media === darkModeQuery,
-        media,
-        addListener: f => f,
-        removeListener: f => f
-      }));
-      darkmode({ activateLightMode });
-      expect(activateDarkMode).toHaveBeenCalledTimes(0);
-      expect(activateLightMode).toHaveBeenCalledTimes(0);
-      expect(activateFallback).toHaveBeenCalledTimes(0);
-    });
-
-    test('should call activateFallback when no preference is set', () => {
+    test('should call onChange correctly when in no preference mode', () => {
       window.matchMedia.mockImplementation(media => ({
         matches: media === noPrefQuery,
         media,
         addListener: f => f,
         removeListener: f => f
       }));
-      darkmode({ activateFallback });
-      expect(activateDarkMode).toHaveBeenCalledTimes(0);
-      expect(activateLightMode).toHaveBeenCalledTimes(0);
-      expect(activateFallback).toHaveBeenCalledTimes(1);
+      darkmode({ onChange });
+      expect(onChange).toHaveBeenCalledTimes(1);
+      expect(onChange).toHaveBeenCalledWith(themes.NO_PREF, themes);
     });
 
-    test('should call activateFallback when no matchMedia support', () => {
+    test('should call onChange correctly when no prefers-color-scheme support', () => {
       window.matchMedia.mockImplementation(media => ({
         matches: media === '',
         media,
         addListener: f => f,
         removeListener: f => f
       }));
-      darkmode({ activateFallback });
-      expect(activateDarkMode).toHaveBeenCalledTimes(0);
-      expect(activateLightMode).toHaveBeenCalledTimes(0);
-      expect(activateFallback).toHaveBeenCalledTimes(1);
+      darkmode({ onChange });
+      expect(onChange).toHaveBeenCalledTimes(1);
+      expect(onChange).toHaveBeenCalledWith(themes.NO_SUPP, themes);
     });
   });
 
@@ -107,7 +81,7 @@ describe('darkmode', () => {
         addListener,
         removeListener: f => f
       }));
-      darkmode();
+      darkmode({ onChange });
       expect(addListener).toHaveBeenCalledTimes(2);
     });
   });

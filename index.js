@@ -1,4 +1,4 @@
-module.exports = ({ onChange }) => {
+module.exports = ({ onChange = () => {} }) => {
   const themes = Object.freeze({
     DARK: 'dark',
     LIGHT: 'light',

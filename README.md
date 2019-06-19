@@ -40,11 +40,7 @@ $ npm install darkmodejs
 ```js
 import darkmode from 'darkmodejs';
 
-const config = {
-  activateDarkMode: () => {},
-  activateLightMode: () => {},
-  activateFallback: () => {}
-};
+const config = { onChange: (activeTheme, themes) => {} };
 
 darkmode(config);
 ```
@@ -55,27 +51,66 @@ If you need ES5 support, you can `require` the package instead.
 const darkmode = require('darkmodejs');
 ```
 
+An example could be logging to console when a theme is active:
+
+```js
+import darkmode from 'darkmodejs';
+
+const onChange = (activeTheme, themes) => {
+  switch (activeTheme) {
+    case themes.DARK:
+      console.log('darkmode enabled');
+      break;
+    case themes.LIGHT:
+      console.log('lightmode enabled');
+      break;
+    case themes.NO_PREF:
+      console.log('no preference enabled');
+      break;
+    case themes.NO_SUPP:
+      console.log('no support sorry');
+      break;
+  }
+};
+
+darkmode({ onChange });
+```
+
 ## ⚙ API
 
-`darkmodejs` accepts a `config` object of functions.
+`darkmodejs` accepts a `config` object, which in turn accepts a single function of `onChange`.
 
-#### activateDarkMode
+### `onChange(activeTheme, themes)`
 
-**Type:** `Function`. **Required:** `No`.
+_**Type:** `Function`. **Required:** `No`._
 
-This function will be run whenever `(prefers-color-scheme: dark)` returns `true`. Both initially and using a [MediaQueryList.addListener](https://developer.mozilla.org/en-US/docs/Web/API/MediaQueryList/addListener) to listen for changes to your theme.
+This function is called when `darkmodejs` is executed to check:
 
-#### activateLightMode
+- if there is support for `prefers-color-scheme`;
+- if the `dark`, `light` or `no-preference` theme is active.
 
-**Type:** `Function`. **Required:** `No`.
+The function is also bound to [MediaQueryList.addListener](https://developer.mozilla.org/en-US/docs/Web/API/MediaQueryList/addListener) to listen for changes.
 
-This function will be run whenever `(prefers-color-scheme: light)` returns `true`. Both initially and using a [MediaQueryList.addListener](https://developer.mozilla.org/en-US/docs/Web/API/MediaQueryList/addListener) to listen for changes to your theme.
+#### `activeTheme`
 
-#### activateFallback
+_**Type:** `String`. **Required:** `No`._
 
-**Type:** `Function`. **Required:** `No`.
+Returns the current active theme.
 
-This function will be run either when `(prefers-color-scheme: no-preference)` returns `true`, or there is no Browser Support for `prefers-color-scheme`. Only runs once.
+#### `themes`
+
+_**Type:** `Object{String}`. **Required:** `No`._
+
+Returns all available theme states:
+
+```
+{
+  DARK: 'dark',
+  LIGHT: 'light',
+  NO_PREF: 'no-preference',
+  NO_SUPP: 'no-support'
+}
+```
 
 ## ✍️ License
 

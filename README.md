@@ -3,9 +3,8 @@
 <div>
 
 [![Status](https://img.shields.io/badge/status-active-success.svg)]()
-[![GitHub Issues](https://img.shields.io/github/issues/assortment/darkmodejs.svg)](https://github.com/assortment/darkmodejs/issues)
-[![GitHub Pull Requests](https://img.shields.io/github/issues-pr/assortment/darkmodejs.svg)](https://github.com/assortment/darkmodejs/pulls)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](/LICENSE)
+[![npm](https://img.shields.io/npm/v/@assortment/darkmodejs.svg)](https://www.npmjs.com/package/@assortment/darkmodejs)
 
 </div>
 

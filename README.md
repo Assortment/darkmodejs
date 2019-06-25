@@ -16,6 +16,9 @@ Utility package for managing Dark Mode on the web.
 
 Utilises the [`matchMedia`](https://developer.mozilla.org/en-US/docs/Web/API/Window/matchMedia) API and its listeners, in combination with the [`prefers-color-scheme`](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-color-scheme) media query, in order to fire functions whenever you're in Dark Mode.
 
+![Example application using darkmodejs in Windows 10 Firefox](https://i.imgur.com/ZR2aGIE.gif)
+_Example application using darkmodejs in Windows 10 Firefox_
+
 ## 📝 Prerequisites
 
 Requires an Operating System which supports Dark Mode:
@@ -110,6 +113,29 @@ Returns all available theme states:
   NO_SUPP: 'no-support'
 }
 ```
+
+## 🎬 Examples
+
+The following examples are taken from `darkmodejs-demo`, a demo application created to show how you can use `@assortment/darkmodejs` in conjunction with [Emotion Theming](https://emotion.sh/docs/theming) to control your website's theme based on a user's OS preference.
+
+- 💻 Code: https://github.com/Assortment/darkmodejs-demo
+- 🌐 URL: https://darkmodejs-demo.netlify.com/
+
+### Windows 10:
+
+#### Firefox (supported)
+
+![Supported in Windows 10 with Firefox](https://i.imgur.com/ZR2aGIE.gif)
+
+#### Chrome (not supported until Chrome 76)
+
+![Not supported in Windows 10 with Chrome 75](https://i.imgur.com/C6pyZVr.gif)
+
+### No preference
+
+Special mention to `no-preference`. To my knowledge I don't believe any Operating System currently allows for a no preference option, so there's no current circumstance where this returns true from a `prefers-color-scheme` media query. That said, [as its part of the specification](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-color-scheme) I've included it as an option in the demo app if you ever want to do anything specific.
+
+![Example no preference theme set](https://i.gyazo.com/5555e2439eadfcf80e184b7a4434fbc5.png)
 
 ## ✍️ License
 

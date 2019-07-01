@@ -121,7 +121,17 @@ The following examples are taken from `darkmodejs-demo`, a demo application crea
 - 💻 Code: https://github.com/Assortment/darkmodejs-demo
 - 🌐 URL: https://darkmodejs-demo.netlify.com/
 
-### Windows 10:
+### MacOS
+
+#### Safari (supported)
+
+![Supported in MacOS with Safari](https://i.imgur.com/OZLBAV8.gif)
+
+#### Firefox (supported)
+
+![Supported in MacOS with Firefox](https://i.imgur.com/2IBdHYK.gif)
+
+### Windows 10
 
 #### Firefox (supported)
 

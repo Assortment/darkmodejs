@@ -9,6 +9,9 @@ module.exports = ({ onChange = () => {} }) => {
   const lightQuery = window.matchMedia(`(prefers-color-scheme: ${themes.LIGHT})`);
   const noPrefQuery = window.matchMedia(`(prefers-color-scheme: ${themes.NO_PREF})`);
   const isSupported = darkQuery.matches || lightQuery.matches || noPrefQuery.matches;
+  const queryListener = (q, theme) => q.matches && onChange(theme, themes);
+  const darkQueryListener = q => queryListener(q, themes.DARK);
+  const lightQueryListener = q => queryListener(q, themes.LIGHT);
 
   if (!isSupported) {
     return onChange(themes.NO_SUPP, themes);
@@ -18,6 +21,13 @@ module.exports = ({ onChange = () => {} }) => {
   if (lightQuery.matches) onChange(themes.LIGHT, themes);
   if (noPrefQuery.matches) onChange(themes.NO_PREF, themes);
 
-  darkQuery.addListener(e => e.matches && onChange(themes.DARK, themes));
-  lightQuery.addListener(e => e.matches && onChange(themes.LIGHT, themes));
+  darkQuery.addListener(darkQueryListener);
+  lightQuery.addListener(lightQueryListener);
+
+  return {
+    removeListeners: () => {
+      darkQuery.removeListener(darkQueryListener);
+      lightQuery.removeListener(lightQueryListener);
+    }
+  }
 };

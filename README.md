@@ -78,11 +78,23 @@ const onChange = (activeTheme, themes) => {
 darkmode({ onChange });
 ```
 
+You can do a spot of cleanup by calling the `removeListeners` function that is returned from `darkmodejs`, which removes both `DARK` and `LIGHT` query listeners.
+
+```js
+const dmjs = darkmode({ onChange });
+
+dmjs.removeListeners();
+```
+
+This can be useful when unmounting components or pages using dynamic routing techniques.
+
 ## ⚙ API
+
+### config
 
 `darkmodejs` accepts a `config` object, which in turn accepts a single function of `onChange`.
 
-### `onChange(activeTheme, themes)`
+#### `onChange(activeTheme, themes)`
 
 _**Type:** `Function`. **Required:** `No`._
 
@@ -93,13 +105,13 @@ This function is called when `darkmodejs` is executed to check:
 
 The function is also bound to [MediaQueryList.addListener](https://developer.mozilla.org/en-US/docs/Web/API/MediaQueryList/addListener) to listen for changes.
 
-#### `activeTheme`
+##### `activeTheme`
 
 _**Type:** `String`. **Required:** `No`._
 
 Returns the current active theme.
 
-#### `themes`
+##### `themes`
 
 _**Type:** `Object{String}`. **Required:** `No`._
 
@@ -113,6 +125,16 @@ Returns all available theme states:
   NO_SUPP: 'no-support'
 }
 ```
+
+### returned
+
+Once initiated, you also have access to the `removeListeners` function for cleanup purposes.
+
+### `removeListeners`
+
+_**Type**: `Function`._
+
+Removes both `DARK` and `LIGHT` query listeners.
 
 ## 🎬 Examples
 

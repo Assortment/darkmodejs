@@ -7,7 +7,6 @@ const themes = {
   NO_SUPP: 'no-support'
 };
 const onChange = jest.fn();
-const addListener = jest.fn();
 const darkModeQuery = '(prefers-color-scheme: dark)';
 const lightModeQuery = '(prefers-color-scheme: light)';
 const noPrefQuery = '(prefers-color-scheme: no-preference)';
@@ -74,7 +73,8 @@ describe('darkmode', () => {
   });
 
   describe('listeners', () => {
-    test('should add listeners to matchMedia queries', () => {
+    test('should call addListener to add both listeners', () => {
+      const addListener = jest.fn();
       window.matchMedia.mockImplementation(media => ({
         matches: true,
         media,
@@ -83,6 +83,19 @@ describe('darkmode', () => {
       }));
       darkmode({ onChange });
       expect(addListener).toHaveBeenCalledTimes(2);
+    });
+
+    test('should call removeListener to remove both listeners', () => {
+      const removeListener = jest.fn();
+      window.matchMedia.mockImplementation(media => ({
+        matches: true,
+        media,
+        addListener: f => f,
+        removeListener
+      }));
+      const dmjs = darkmode({ onChange });
+      dmjs.removeListeners();
+      expect(removeListener).toHaveBeenCalledTimes(2);
     });
   });
 });

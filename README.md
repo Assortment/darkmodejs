@@ -40,23 +40,23 @@ $ npm install @assortment/darkmodejs
 ## 🎈 Usage <a name="usage"></a>
 
 ```js
-import darkmode from '@assortment/darkmodejs';
+import darkmodejs from '@assortment/darkmodejs';
 
 const config = { onChange: (activeTheme, themes) => {} };
 
-darkmode(config);
+darkmodejs(config);
 ```
 
 If you need ES5 support, you can `require` the package instead.
 
 ```js
-const darkmode = require('@assortment/darkmodejs');
+const darkmodejs = require('@assortment/darkmodejs');
 ```
 
 An example could be logging to console when a theme is active:
 
 ```js
-import darkmode from '@assortment/darkmodejs';
+import darkmodejs from '@assortment/darkmodejs';
 
 const onChange = (activeTheme, themes) => {
   switch (activeTheme) {
@@ -75,18 +75,18 @@ const onChange = (activeTheme, themes) => {
   }
 };
 
-darkmode({ onChange });
+darkmodejs({ onChange });
 ```
 
-You can do a spot of cleanup by calling the `removeListeners` function that is returned from `darkmodejs`, which removes both `DARK` and `LIGHT` query listeners.
+You can also do a spot of cleanup by calling the `removeListeners` function that is returned from `darkmodejs`. It removes both `DARK` and `LIGHT` query listeners.
 
 ```js
-const dmjs = darkmode({ onChange });
+const dmjs = darkmodejs({ onChange });
 
 dmjs.removeListeners();
 ```
 
-This can be useful when unmounting components or pages using dynamic routing techniques.
+This can be useful when unmounting components or pages that use dynamic routing techniques.
 
 ## ⚙ API
 
@@ -130,7 +130,7 @@ Returns all available theme states:
 
 Once initiated, you also have access to the `removeListeners` function for cleanup purposes.
 
-### `removeListeners`
+#### `removeListeners`
 
 _**Type**: `Function`._
 

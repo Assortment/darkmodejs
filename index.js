@@ -31,5 +31,5 @@ module.exports = ({ onChange = () => {} }) => {
         lightQuery.removeListener(lightQueryListener);
       }
     }
-  }
+  };
 };

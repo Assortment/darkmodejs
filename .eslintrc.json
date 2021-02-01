@@ -16,7 +16,7 @@
   "plugins": ["jest"],
   "rules": {
     "quotes": ["error", "single"],
-    "import/prefer-default-export": false,
+    "import/prefer-default-export": 0,
     "comma-dangle": "off",
     "arrow-parens": ["error", "as-needed"],
     "consistent-return": "off"

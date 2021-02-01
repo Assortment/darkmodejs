@@ -1,6 +1,6 @@
 {
   "name": "@assortment/darkmodejs",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Utility package for managing Dark Mode on the web",
   "main": "index.js",
   "scripts": {

@@ -31,6 +31,8 @@ Requires an Operating System which supports Dark Mode:
 
 Also requires support for the `prefers-color-scheme` media query. A complete list of [supported browsers](https://caniuse.com/#search=prefers-color-scheme) can be found on caniuse.
 
+> **⚠️ Breaking change in v2+**: whilst the base API exposed by darkmodejs has remained the same, under the hood `MediaQueryList`'s [`addListener`](https://developer.mozilla.org/en-US/docs/Web/API/MediaQueryList/addListener) and [`removeListener`](https://developer.mozilla.org/en-US/docs/Web/API/MediaQueryList/removeListener) methods are marked as deprecated in the Web Standard, and have thus been replaced with `addEventListener` and `removeEventListener` respectfully. There is a slight difference in browser compatibility for very old browsers which were never explicitly supported, but for that reason a major version bump was created.
+
 ## 🏁 Install
 
 ```

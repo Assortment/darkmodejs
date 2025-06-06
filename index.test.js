@@ -1,3 +1,7 @@
+/**
+ * @jest-environment jsdom
+ */
+
 import darkmode from '.';
 
 const themes = {

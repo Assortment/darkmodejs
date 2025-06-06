@@ -24,9 +24,6 @@
   },
   "homepage": "https://github.com/assortment/darkmodejs#readme",
   "devDependencies": {
-    "@babel/core": "^7.27.4",
-    "@babel/preset-env": "^7.27.2",
-    "babel-jest": "^29.7.0",
     "jest": "^29.7.0",
     "jest-environment-jsdom": "^29.7.0"
   },

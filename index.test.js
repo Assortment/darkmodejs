@@ -2,7 +2,7 @@
  * @jest-environment jsdom
  */
 
-import darkmode from '.';
+const darkmode = require('./index');
 
 const themes = {
   DARK: 'dark',

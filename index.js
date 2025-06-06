@@ -18,8 +18,8 @@ module.exports = ({ onChange = () => {} }) => {
     if (lightQuery.matches) onChange(themes.LIGHT, themes);
     if (noPrefQuery.matches) onChange(themes.NO_PREF, themes);
 
-    darkQuery.addListener(darkQueryListener);
-    lightQuery.addListener(lightQueryListener);
+    darkQuery.addEventListener(darkQueryListener);
+    lightQuery.addEventListener(lightQueryListener);
   } else {
     onChange(themes.NO_SUPP, themes);
   }
@@ -27,8 +27,8 @@ module.exports = ({ onChange = () => {} }) => {
   return {
     removeListeners: () => {
       if (isSupported) {
-        darkQuery.removeListener(darkQueryListener);
-        lightQuery.removeListener(lightQueryListener);
+        darkQuery.removeEventListener(darkQueryListener);
+        lightQuery.removeEventListener(lightQueryListener);
       }
     }
   };
